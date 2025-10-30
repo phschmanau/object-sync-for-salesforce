@@ -11,7 +11,7 @@
 <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" enctype="multipart/form-data" class="import">
 	<input type="hidden" name="action" value="object_sync_for_salesforce_import">
 	<?php wp_nonce_field( 'object_sync_for_salesforce_nonce_import', 'object_sync_for_salesforce_nonce_import' ); ?>
-	<p><?php esc_html__( 'Import the plugin data from a .json file. You can use the Export options below to get this file.', 'object-sync-for-salesforce' ); ?></p>
+	<p><?php echo esc_html__( 'Import the plugin data from a .json file. You can use the Export options below to get this file.', 'object-sync-for-salesforce' ); ?></p>
 	<p>
 		<input type="file" name="import_file" id="object-sync-for-salesforce-import" required>
 	</p>
