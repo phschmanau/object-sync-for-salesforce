@@ -343,7 +343,7 @@ class Object_Sync_Sf_WordPress {
 		 * @param string $object_type            The requested object type.
 		 */
 		$object_table_structure = apply_filters(
-			$this->option_prefix . '_wordpress_table_structure',
+			$this->option_prefix . 'wordpress_table_structure',
 			$object_table_structure,
 			$object_type
 		);
