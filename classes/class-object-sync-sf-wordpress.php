@@ -330,6 +330,24 @@ class Object_Sync_Sf_WordPress {
 			);
 		} // End if() statement.
 
+		/**
+		 * Filter the resolved WordPress table structure for an object type.
+		 *
+		 * This is a catch-all filter that allows overriding or extending the
+		 * table structure for any object type (core, custom post types, or
+		 * custom taxonomies), while keeping backwards compatibility.
+		 *
+		 * @since 2.2.13
+		 *
+		 * @param array  $object_table_structure The resolved table structure.
+		 * @param string $object_type            The requested object type.
+		 */
+		$object_table_structure = apply_filters(
+			$this->option_prefix . 'wordpress_table_structure',
+			$object_table_structure,
+			$object_type
+		);
+
 		return $object_table_structure;
 	}
 
