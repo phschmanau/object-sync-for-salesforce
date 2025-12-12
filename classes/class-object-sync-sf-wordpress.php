@@ -337,7 +337,7 @@ class Object_Sync_Sf_WordPress {
 		 * table structure for any object type (core, custom post types, or
 		 * custom taxonomies), while keeping backwards compatibility.
 		 *
-		 * @since x.y.z
+		 * @since 2.2.13
 		 *
 		 * @param array  $object_table_structure The resolved table structure.
 		 * @param string $object_type            The requested object type.
