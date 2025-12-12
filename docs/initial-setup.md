@@ -8,8 +8,8 @@ To install the plugin in WordPress, your PHP environment needs the following:
 
 #### To run the plugin on a website
 
-1. At least version 5.6.20 of PHP.
-2. At least version 5.2 of WordPress.
+1. At least version 7.2 of PHP.
+2. At least version 6.5 of WordPress.
 3. SSL support (this is required to connect to Salesforce). Contact your web host if you aren't sure if your website meets this requirement.
 4. If you'll be using the SOAP API, PHP needs to be compiled with SOAP web services and
   OpenSSL support, as per:

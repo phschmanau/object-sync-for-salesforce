@@ -1,7 +1,11 @@
 Changelog
 =========
 
-* 2.2.12 (2025-)
+* 2.2.13 (2025-)
+	* Plugin status: Plugin status: as before, this plugin doesn't currently have official maintainers. I try to check in occasionally if anyone submits pull requests or major issues and merge/address them if I can do so rather quickly. Updates will be given within the plugin if/when that status changes.
+	* Developers: Thanks to @phschmanau for adding the `object_sync_for_salesforce_wordpress_table_structure` filter, which allows plugins to override or extend the database table structure, and the methods to work with it, of any mapped WordPress object with their own structures. See [the documentation](https://github.com/MinnPost/object-sync-for-salesforce/blob/master/docs/extending-mapping-options.md#wordpress-object-database-table-structure) for how to use it.
+
+* 2.2.12 (2025-08-03)
 	* Plugin status: Plugin status: as before, this plugin doesn't currently have official maintainers. I try to check in occasionally if anyone submits pull requests or major issues and merge/address them if I can do so rather quickly. Updates will be given within the plugin if/when that status changes.
 	* Bug fix: Fix warning triggered in WordPress 6.7 and newer due to translation functions being called too early in the plugin lifecycle. Thanks to GitHub user @alessandrocarrera for the report and @richaber for additional context.
 	* Bug fix: Check for createable attribute on Salesforce fields so that the mapping enables operations where there are createable fields but not updateable ones. Thanks to GitHub user @jose-dvm for the report.
