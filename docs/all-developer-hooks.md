@@ -120,6 +120,10 @@ This page lists all developer hooks available in this plugin, with links to wher
     - description: allow plugins to add filename or parent data when creating attachment objects.
     - code: [classes/class-object-sync-sf-wordpress.php](../classes/class-object-sync-sf-wordpress.php)
     - documentation: [extending wordpress](./extending-wordpress.md#for-attachments)
+- `object_sync_for_salesforce_wordpress_table_structure`:
+    - description: when getting the database table structure for any WordPress object, allow plugins to override or extend it, as well as the methods used to work with it, with their own.
+    - code: [classes/class-object-sync-sf-wordpress.php](../classes/class-object-sync-sf-wordpress.php)
+    - documentation: [extending mapping options](./extending-mapping-options.md#wordpress-object-database-table-structure)
 - `object_sync_for_salesforce_wordpress_object_fields`:
     - description: when getting the fields for a WordPress object, allow plugins to add more (and also cache the array).
     - code: [classes/class-object-sync-sf-wordpress.php](../classes/class-object-sync-sf-wordpress.php)

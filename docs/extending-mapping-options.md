@@ -30,6 +30,65 @@ function remove_types( $types_to_remove ) {
 
 In the above examples, an object called `foo` would be added to the dropdown, and an existing object called `acme_product` would be removed.
 
+## WordPress object database table structure
+
+The `object_sync_for_salesforce_wordpress_table_structure` hook populates an array of the database structure, as well as the methods used to work with it, of any WordPress object type, and allows plugins to modify any of these.
+
+Example of `$object_table_structure` array:
+
+```php
+$user_meta_methods = array(
+    'create' => 'update_user_meta',
+    'read'   => 'get_user_meta',
+    'update' => 'update_user_meta',
+    'delete' => 'delete_user_meta',
+);
+
+$object_table_structure = array(
+    'object_name'     => 'user',
+    'content_methods' => array(
+        'create' => 'wp_insert_user',
+        'read'   => 'get_user_by',
+        'update' => 'wp_update_user',
+        'delete' => 'wp_delete_user',
+        'match'  => 'get_user_by',
+    ),
+    'meta_methods'    => $user_meta_methods,
+    'content_table'   => $this->wpdb->prefix . 'users',
+    'id_field'        => 'ID',
+    'meta_table'      => $this->wpdb->prefix . 'usermeta',
+    'meta_join_field' => 'user_id',
+    'where'           => '',
+    'ignore_keys'     => array( // Keep it simple and avoid security risks.
+        'user_pass',
+        'user_activation_key',
+        'session_tokens',
+    ),
+);
+// Check for Multisite installation. Sitewide User table uses base site prefix across all sites.
+if ( is_multisite() ) {
+    $object_table_structure['content_table'] = $this->wpdb->base_prefix . 'users';
+    $object_table_structure['meta_table']    = $this->wpdb->base_prefix . 'usermeta';
+}
+```
+
+To modify the array, you can use the `object_sync_for_salesforce_wordpress_table_structure` hook.
+
+Code example:
+
+```php
+add_filter( 'object_sync_for_salesforce_wordpress_table_structure', 'object_table_structure', 10, 2 );
+function add_field( $object_table_structure, $wordpress_object_type ) {
+    if ( 'user' === $object_table_structure ) {
+        $object_table_structure['id_field']      = 'my_custom_id_field';
+        $object_table_structure['content_table'] = 'my_custom_table';
+    }
+    return $object_table_structure;
+}
+```
+
+By default, this plugin tries to use the built in WordPress table structure, and methods for retrieving and modifying data, for any built in data patterns. But given enough work, this hook should support any other structure and method an object might need.
+
 ## Available WordPress fields
 
 The `object_sync_for_salesforce_wordpress_object_fields` hook populates an array of fields for a given object, which is then added to the list in the dropdown. This array is also used in several other parts of the plugin, so its structure is more complex.
